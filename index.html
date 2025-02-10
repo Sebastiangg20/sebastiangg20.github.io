@@ -118,7 +118,7 @@
                 <div class="card-inner">
                     <div class="card-front"></div>
                     <div class="card-back">
-                        <img src="foto1.jpg" alt="Foto especial">
+                        <img src="foto1.jpg?raw=true" alt="Foto especial">
                     </div>
                 </div>
             </div>
@@ -175,7 +175,7 @@
             element.style.animationDuration = `${Math.random() * 3 + 2}s`;
             fallingElements.appendChild(element);
 
-            // Eliminar el elemento después de que termine la animación
+            // Eliminar el elemento después de que termine la 
             setTimeout(() => {
                 element.remove();
             }, 5000);
