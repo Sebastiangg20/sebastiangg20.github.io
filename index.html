@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para mi linda jeje</title>
+    <title>Invitación Interactiva de San Valentín</title>
     <style>
         body {
             margin: 0;
@@ -103,6 +103,40 @@
             font-size: 14px;
             text-align: center;
         }
+
+        /* Estilos para el menú de opciones */
+        .menu {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 2;
+        }
+
+        .menu button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #ff6b6b;
+            color: #fff;
+        }
+
+        .menu button:hover {
+            background-color: #9a2f4d;
+        }
+
+        .menu p {
+            color: #5c3a3a;
+            font-size: 18px;
+        }
     </style>
 </head>
 <body>
@@ -111,8 +145,8 @@
 
     <!-- Contenido principal -->
     <div class="container">
-        <h1>Estimada quiero preguntarle algo</h1>
-        <p>Haz clic en las cartas</p>
+        <h1>¡Te invito a San Valentín!</h1>
+        <p>Haz clic en las cartas para descubrir mensajes especiales.</p>
         <div class="cards">
             <div class="card" onclick="flipCard(this)">
                 <div class="card-inner">
@@ -120,15 +154,15 @@
                         <img src="foto1.JPG" alt="Foto especial">
                     </div>
                     <div class="card-back">
-                        <p>Mi Inge Betty, eres quien alegra mi día. ❤️</p>
+                        <p>Mi Inge Betty, eres quien alegra mi día.❤️</p>
                     </div>
                 </div>
             </div>
             <div class="card" onclick="flipCard(this)">
                 <div class="card-inner">
                     <div class="card-front">
-                    	<img src="foto2.JPG" alt="Foto especial">
-		    </div>
+                        <img src="foto2.JPG" alt="Foto especial">
+                    </div>
                     <div class="card-back">
                         <p>Una preciosa que mueve mi vida. 💓</p>
                     </div>
@@ -154,7 +188,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card" onclick="flipCard(this)">
+            <div class="card" onclick="flipLastCard(this)">
                 <div class="card-inner">
                     <div class="card-front">
                         <img src="foto5.JPG" alt="Foto especial">
@@ -167,10 +201,46 @@
         </div>
     </div>
 
+    <!-- Menú de opciones -->
+    <div id="menu" class="menu">
+        <p>¿Aceptas?</p>
+        <button onclick="selectOption('yes')">Sí</button>
+        <button onclick="selectOption('no')">No</button>
+    </div>
+
+    <!-- Mensaje de respuesta -->
+    <div id="response" class="menu" style="display: none;">
+        <p id="response-message"></p>
+    </div>
+
     <script>
         // Función para voltear las cartas
         function flipCard(card) {
             card.classList.toggle('flipped');
+        }
+
+        // Función para manejar la última carta
+        function flipLastCard(card) {
+            card.classList.toggle('flipped');
+            // Mostrar el menú de opciones
+            document.getElementById('menu').style.display = 'block';
+        }
+
+        // Función para manejar la selección de opciones
+        function selectOption(option) {
+            const responseMessage = document.getElementById('response-message');
+            const menu = document.getElementById('menu');
+            const response = document.getElementById('response');
+
+            if (option === 'yes') {
+                responseMessage.textContent = 'Cita agendada 😊❤️ Contactese al 0983482675';
+            } else if (option === 'no') {
+                responseMessage.textContent = 'Chistosita no HP? :) Precione F5';
+            }
+
+            // Ocultar el menú y mostrar el mensaje de respuesta
+            menu.style.display = 'none';
+            response.style.display = 'block';
         }
 
         // Generar lluvia de corazones y estrellas
